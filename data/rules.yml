@@ -1,0 +1,47 @@
+version: '3.1'
+
+rules:
+  - rule: Fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+
+  - rule: Get exercise_video_type and Ask exercise_video_level
+    condition:
+      - active_loop: exercise_video_type_form
+    steps:
+      - intent: inform_exercise_video_type
+      - action: exercise_video_type_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_level_exercise_video
+      - action: exercise_video_level_form
+      - active_loop: exercise_video_level_form
+
+  - rule: GET exercise_video_level and Ask exercise_video_time
+    condition:
+      - active_loop: exercise_video_level_form
+    steps:
+      - intent: inform_exercise_video_level
+      - action: exercise_video_level_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_time_exercise_video
+      - action: exercise_video_time_form
+      - active_loop: exercise_video_time_form
+
+  - rule: GET exercise_video_time and Ask exercise_video_time
+    condition:
+      - active_loop: exercise_video_time_form
+    steps:
+      - intent: inform_exercise_video_time
+      - action: exercise_video_time_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_send_exercise_video
+      - action: utter_remind_wear_smartwatch
+      - action: utter_tellmewhendone
+      - action: action_restart

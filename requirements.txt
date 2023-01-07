@@ -1,0 +1,4 @@
+rasa
+spacy
+ginza
+ja-ginza

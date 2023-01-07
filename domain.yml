@@ -1,0 +1,77 @@
+version: '3.1'
+
+intents:
+  - thankyou
+  - nlu_fallback
+  - request_exercise_video
+  - inform_exercise_video_type
+  - inform_exercise_video_level
+  - inform_exercise_video_time
+
+entities:
+  - exercise_type
+  - exercise_video_type
+  - exercise_video_level
+  - exercise_video_time
+
+slots:
+  exercise_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: exercise_type
+  exercise_video_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+        entity: exercise_video_type
+  exercise_video_level:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+        entity: exercise_video_level
+  exercise_video_time:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+        entity: exercise_video_time
+
+responses:
+  utter_default:
+    - text: 'Please say again'
+  utter_preference_exercise_video:
+    - text: 'What kind of exercise would you like to do?'
+  utter_level_exercise_video:
+    - text: 'How level would you like to do {exercise_video_type}?'
+  utter_time_exercise_video:
+    - text: 'How long a {exercise_video_type} video would you like to see?'
+  utter_send_exercise_video:
+    - text: 'Please open your smart phone and access the chatbot. It will give you video recommendations.'
+  utter_remind_wear_smartwatch:
+    - text: 'Please put on your smartwatch before you start exercising.'
+  utter_tellmewhendone:
+    - text: 'Tell me when you have finished your exercise.'
+
+forms:
+  exercise_type_form:
+    required_slots:
+      - exercise_type
+  exercise_video_type_form:
+    required_slots:
+      - exercise_video_type
+  exercise_video_level_form:
+    required_slots:
+      - exercise_video_level
+  exercise_video_time_form:
+    required_slots:
+      - exercise_video_time
+
+# actions:
+#   - action_check_PandT
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

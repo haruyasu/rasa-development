@@ -1,0 +1,9 @@
+version: '3.1'
+
+stories:
+  - story: get_exercise_video
+    steps:
+      - intent: request_exercise_video
+      - action: utter_preference_exercise_video
+      - action: exercise_video_type_form
+      - active_loop: exercise_video_type_form
