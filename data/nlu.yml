@@ -14,14 +14,14 @@ nlu:
       - Exercise video type is [stretching](exercise_video_type).
       - Exercise video type is [cardio](exercise_video_type).
       - Exercise video type is [yoga](exercise_video_type).
-      - Exercise video type is [strength ](exercise_video_type).
+      - Exercise video type is [strength](exercise_video_type).
   - intent: inform_exercise_video_level
     examples: |
       - Exercise video level is [easy](exercise_video_level).
       - Exercise video level is [medium](exercise_video_level).
       - Exercise video level is [hard](exercise_video_level).
       - Exercise video level is [light](exercise_video_level).
-      - Exercise video level is [intense ](exercise_video_level).
+      - Exercise video level is [intense](exercise_video_level).
   - intent: inform_exercise_video_time
     examples: |
       - Exercise video time is [10](exercise_video_time) minutes.
